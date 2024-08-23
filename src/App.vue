@@ -1,6 +1,14 @@
 <template>
   <div class="movies-list">
-    <div class="movie" v-for="(movie, index) in movies" :key="movie.id">
+    <div class="movie"
+         v-for="(movie, movieIndex) in movies"
+         :key="movie.id">
+
+      <div class="absolute">
+        <StarIcon :class="movie.rating !== null ? 'text-yellow-500' : 'text-gray-500'"
+                  class="w-16"/>
+        <h2 class="absolute top-5 left-7 ">{{ movie.rating ? movie.rating : '-' }}</h2>
+      </div>
       <img :src="movie.image" :alt="movie.name">
       <div class="movie-description">
         <h1>{{movie.name}}</h1>
@@ -13,9 +21,14 @@
         <div class="rating">
           <p>Rating: ({{ movie.rating }}/5) </p>
 
-            <button class="star-button" @click.once="rateFilm(note, index)" v-for="note in 5">
-              <StarIcon v-if="note <= movie.rating" style="color: #FFD250" />
-              <StarIcon v-else style="color: grey" />
+            <button
+                v-for="rate in 5"
+                class="star-button"
+                :class="rate <= movie.rating ? 'text-yellow-500' : 'text-gray-500'"
+                :disabled="rate === movie.rating"
+                @click.once="updateRating(rate, movieIndex)"
+            >
+              <StarIcon />
             </button>
 
         </div>
@@ -32,8 +45,8 @@ import {ref} from 'vue'
 
 const movies = ref(items)
 
-function rateFilm(note, index) {
-  movies.value[index].rating = note
+function updateRating(rating, movieIndex) {
+  movies.value[movieIndex].rating = rating
 }
 
 </script>

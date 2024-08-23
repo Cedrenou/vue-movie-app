@@ -28,6 +28,21 @@ During this challenge, we’ll code out the following features:
 - Allow the end user to click on any of the 5 buttons to update the movie rating accordingly.
 - Disable the button for the currently selected rating to prevent the user from giving the same rating twice.
 
+# Challenge 3
+- Create an "Add Movie" button
+- Show a form for creating new movies when the button is clicked
+- Include the following fields on the form:
+- Name: text input & required
+- Description: textarea
+- Image: text input
+- Genre: dropdown & required & user can select multiple
+- Is in theaters: checkbox
+- Validate the form on submit
+- Once submitted and valid, add the movie to the list
+- Clear and hide the form after the movie is added
+- Add a cancel button to the form
+- Clicking the cancel button should clean up the form, and any error that it might have.
+- Clicking the cancel button should hide the form for the user.
 
 
 ## Other Considerations
